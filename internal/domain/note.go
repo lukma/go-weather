@@ -21,3 +21,10 @@ type NoteRepository interface {
 	UpdateNote(ctx context.Context, note Note) error
 	DeleteNote(ctx context.Context, id uuid.UUID) error
 }
+
+type NoteUsecase interface {
+	GetNotes(ctx context.Context) ([]Note, error)
+	CreateNote(ctx context.Context, note Note) error
+	UpdateNote(ctx context.Context, note Note) error
+	DeleteNote(ctx context.Context, id uuid.UUID) error
+}
