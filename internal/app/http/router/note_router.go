@@ -23,11 +23,18 @@ func (r *noteRoute) RegisterIn(group *gin.RouterGroup) {
 	createNoteHandler := &notehandler.CreateNoteHandler{
 		NoteUsecase: r.noteUsecase,
 	}
+	updateNoteHandler := &notehandler.UpdateNoteHandler{
+		NoteUsecase: r.noteUsecase,
+	}
+	deleteNoteHandler := &notehandler.DeleteNoteHandler{
+		NoteUsecase: r.noteUsecase,
+	}
 
 	router := group.Group("/notes")
 	{
 		router.GET("", getNotesHandler.GetNotes)
 		router.POST("", createNoteHandler.CreateNote)
-		router.PATCH("/:id", createNoteHandler.CreateNote)
+		router.PATCH("/:id", updateNoteHandler.UpdateNote)
+		router.DELETE("/:id", deleteNoteHandler.DeleteNote)
 	}
 }

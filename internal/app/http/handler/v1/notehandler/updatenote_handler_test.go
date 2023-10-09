@@ -42,7 +42,7 @@ func TestUpdateNote(t *testing.T) {
 		mockUpdateNote.Unset()
 	})
 
-	t.Run("failed any datasource error", func(t *testing.T) {
+	t.Run("failed", func(t *testing.T) {
 		mockUpdateNote := noteUsecase.
 			On("UpdateNote", mock.Anything, mock.Anything).
 			Return(errors.New("some error"))
