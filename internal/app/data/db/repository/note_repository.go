@@ -19,7 +19,7 @@ func NewNoteRepository(db *sql.DB) domain.NoteRepository {
 }
 
 func (repository *noteRepository) GetNotes(ctx context.Context) ([]domain.Note, error) {
-	var notes []domain.Note
+	notes := []domain.Note{}
 	var err error
 
 	rows, err := repository.db.QueryContext(ctx, "select * from notes")
@@ -52,7 +52,7 @@ func (repository *noteRepository) CreateNote(ctx context.Context, note domain.No
 }
 
 func (repository *noteRepository) UpdateNote(ctx context.Context, note domain.Note) error {
-	_, err := repository.db.ExecContext(ctx, "update notes set title = ?, content = ? where id = ?", note.Title, note.Content, note.ID)
+	_, err := repository.db.ExecContext(ctx, "update notes set title = ?, content = ? where id = UUID_TO_BIN(?)", note.Title, note.Content, note.ID)
 	return err
 }
 
