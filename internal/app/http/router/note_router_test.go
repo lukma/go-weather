@@ -16,10 +16,11 @@ func TestNoteRouter(t *testing.T) {
 	r := gin.Default()
 	router.NewNoteRouter(noteUsecase).RegisterIn(r.Group(""))
 
-	paths := map[string]string{}
+	paths := map[string]bool{}
 	for _, v := range r.Routes() {
-		paths[v.Path] = v.Method
+		paths[v.Path+":"+v.Method] = true
 	}
 
-	assert.Equal(t, paths["/notes"], http.MethodGet)
+	assert.True(t, paths["/notes:"+http.MethodGet])
+	assert.True(t, paths["/notes:"+http.MethodPost])
 }

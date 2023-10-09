@@ -8,10 +8,12 @@ type ErrorCode string
 
 const (
 	errorCodeServerFailure ErrorCode = "AO-101"
+	errorCodeMissingField  ErrorCode = "AO-102"
 )
 
 var (
 	ErrServerFailure = &APIError{Code: errorCodeServerFailure}
+	ErrMissingField  = &APIError{Code: errorCodeMissingField}
 )
 
 type APIError struct {
