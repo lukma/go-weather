@@ -1,7 +1,7 @@
 package router
 
 import (
-	"altechomega.lukma.dev/notes/internal/app/http/handler/v1/notehandler"
+	notehandlerV1 "altechomega.lukma.dev/notes/internal/app/http/handler/v1/notehandler"
 	"altechomega.lukma.dev/notes/internal/domain"
 	"github.com/gin-gonic/gin"
 )
@@ -17,20 +17,20 @@ func NewNoteRouter(noteUsecase domain.NoteUsecase) *noteRoute {
 }
 
 func (r *noteRoute) RegisterIn(group *gin.RouterGroup) {
-	getNotesHandler := &notehandler.GetNotesHandler{
+	getNotesHandler := &notehandlerV1.GetNotesHandler{
 		NoteUsecase: r.noteUsecase,
 	}
-	createNoteHandler := &notehandler.CreateNoteHandler{
+	createNoteHandler := &notehandlerV1.CreateNoteHandler{
 		NoteUsecase: r.noteUsecase,
 	}
-	updateNoteHandler := &notehandler.UpdateNoteHandler{
+	updateNoteHandler := &notehandlerV1.UpdateNoteHandler{
 		NoteUsecase: r.noteUsecase,
 	}
-	deleteNoteHandler := &notehandler.DeleteNoteHandler{
+	deleteNoteHandler := &notehandlerV1.DeleteNoteHandler{
 		NoteUsecase: r.noteUsecase,
 	}
 
-	router := group.Group("/notes")
+	router := group.Group("/v1/notes")
 	{
 		router.GET("", getNotesHandler.GetNotes)
 		router.POST("", createNoteHandler.CreateNote)
