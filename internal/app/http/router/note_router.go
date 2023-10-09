@@ -28,5 +28,6 @@ func (r *noteRoute) RegisterIn(group *gin.RouterGroup) {
 	{
 		router.GET("", getNotesHandler.GetNotes)
 		router.POST("", createNoteHandler.CreateNote)
+		router.PATCH("/:id", createNoteHandler.CreateNote)
 	}
 }

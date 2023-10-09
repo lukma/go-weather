@@ -18,9 +18,10 @@ func TestNoteRouter(t *testing.T) {
 
 	paths := map[string]bool{}
 	for _, v := range r.Routes() {
-		paths[v.Path+":"+v.Method] = true
+		paths[v.Path+"|"+v.Method] = true
 	}
 
-	assert.True(t, paths["/notes:"+http.MethodGet])
-	assert.True(t, paths["/notes:"+http.MethodPost])
+	assert.True(t, paths["/notes|"+http.MethodGet])
+	assert.True(t, paths["/notes|"+http.MethodPost])
+	assert.True(t, paths["/notes/:id|"+http.MethodPatch])
 }
