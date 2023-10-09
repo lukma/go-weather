@@ -31,7 +31,7 @@ func TestGetNotes(t *testing.T) {
 		expected := []domain.Note{
 			{
 				ID:        uuid.MustParse("6ba7b811-9dad-11d1-80b4-00c04fd430c8"),
-				Title:     "Some Title",
+				Title:     "Hello World",
 				Content:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 				CreatedAt: createdAt,
 				UpdatedAt: &updatedAt,

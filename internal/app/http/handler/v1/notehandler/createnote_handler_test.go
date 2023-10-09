@@ -29,7 +29,7 @@ func TestCreateNote(t *testing.T) {
 			Return(nil)
 
 		v := url.Values{}
-		v.Set("title", "Some Title")
+		v.Set("title", "Hello World")
 		v.Set("content", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 		body := bytes.NewBufferString(v.Encode())
 
@@ -49,7 +49,7 @@ func TestCreateNote(t *testing.T) {
 			Return(errors.New("some error"))
 
 		v := url.Values{}
-		v.Set("title", "Some Title")
+		v.Set("title", "Hello World")
 		body := bytes.NewBufferString(v.Encode())
 
 		w := httptest.NewRecorder()
@@ -68,7 +68,7 @@ func TestCreateNote(t *testing.T) {
 			Return(errors.New("some error"))
 
 		v := url.Values{}
-		v.Set("title", "Some Title")
+		v.Set("title", "Hello World")
 		v.Set("content", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 		body := bytes.NewBufferString(v.Encode())
 
