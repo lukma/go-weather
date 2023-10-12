@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  apigw:
+    container_name: APIGateway
+    image : lukmadev-notes-api:1.0.0
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/opt/app/api
+    links:
+      - db
+  db:
+    container_name: AppDB
+    image: mysql:8.1.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'altechomegadb'
+      MYSQL_USER: 'lukmadev'
+      MYSQL_PASSWORD: '9ee2yGA@fA@eCXBH'
+      MYSQL_ROOT_PASSWORD: '9ee2yGA@fA@eCXBH'
+    ports:
+      - '3306:3306'
+    volumes:
+      - notes-db:/var/lib/mysql
+volumes:
+  notes-db:
