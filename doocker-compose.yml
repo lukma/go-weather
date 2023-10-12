@@ -10,6 +10,7 @@ services:
       - .:/opt/app/api
     links:
       - db
+
   db:
     container_name: AppDB
     image: mysql:8.1.0
